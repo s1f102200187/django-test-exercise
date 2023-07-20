@@ -6,6 +6,7 @@
     <title>To Do Application</title>
     <meta charset="UTF-8">
     <meta name="author" content="INIAD">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   </head>
 
   <body>
@@ -13,23 +14,24 @@
     <p>You can submit tasks from the following form.</p>
     <form action="{% url 'index' %}" method="post">
       {% csrf_token %}
-      <div>
-        <label for="titleInput">Title</label><br>
-        <input id="titleInput" name="title" type="text" placeholder="Input title">
+      <div class="mb-3">
+        <label for="titleInput" class="form-label">Title</label><br>
+        <input id="titleInput" name="title" type="text" placeholder="Input title" class="form-control">
       </div>
-      <div>
-        <label for="dueInput">Due at:</label><br>
-        <input id="dueInput" name="due_at" type="datetime-local">
+      <div class="mb-3">
+        <label for="dueInput" class="form-label">Due at:</label><br>
+        <input id="dueInput" name="due_at" type="datetime-local" class="form-control">
       </div>
-      <div>
-        <button type="submit">Submit</button>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-success">Submit</button>
       </div>
     </form>
+    <hr>
     <br>
 
     <div>
-      <a href="{% url 'index' %}?order=due">Sort by Due Date</a> |
-      <a href="{% url 'index' %}?order=post">Sort by Posted Date</a>
+      <a href="{% url 'index' %}?order=due" class="btn btn-secondary">Sort by Due Date</a> |
+      <a href="{% url 'index' %}?order=post" class="btn btn-secondary">Sort by Posted Date</a>
     </div>
     <div>
       <a href="{% url 'index' %}filter=comp">Filter Complated</a> | 
@@ -39,15 +41,15 @@
     {% for task in tasks %}
     <div class="text">
       <h2><a href="{% url 'detail' task.id %}">{{ task.title }}</a></h2>
-      <ul>
-        <li>Posted at: {{ task.posted_at }}</li>
+      <ul class="list-group">
+        <li class="list-group-item">Posted at: {{ task.posted_at }}</li>
         {% if task.due_at %} 
-        <li>Due at: {{ task.due_at }}</li>
+        <li class="list-group-item">Due at: {{ task.due_at }}</li>
         {% endif %}
         {% if task.completed %} 
-        <li>Status: Completed</li>
+        <li class="list-group-item">Status: <b>Completed</b></li>
         {% else %}
-        <li>Status: Not Completed</li>
+        <li class="list-group-item">Status: <b>Not Completed</b></li>
         {% endif %}
       </ul>
     </div>

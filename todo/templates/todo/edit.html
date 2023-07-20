@@ -6,6 +6,7 @@
     <title>To Do Application</title>
     <meta charset="UTF-8">
     <meta name="author" content="INIAD">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   </head>
 
   <body>
@@ -13,16 +14,16 @@
     <p>You can edit tasks from the following form.</p>
     <form action="{% url 'update' task.id%}" method="post">
       {% csrf_token %}
-      <div>
-        <label for="titleInput">Title</label><br>
-        <input id="titleInput" name="title" type="text" placeholder="Input title" value="{{ task.title }}">
+      <div class="mb-3">
+        <label for="titleInput" class="form-label">Title</label><br>
+        <input id="titleInput" name="title" type="text" placeholder="Input title" class="form-control">
       </div>
-      <div>
-        <label for="dueInput">Due at:</label><br>
-        <input id="dueInput" name="due_at" type="datetime-local" value="{{ task.due_at |date:"Y-m-d H:i" }}">
+      <div class="mb-3">
+        <label for="dueInput" class="form-label">Due at:</label><br>
+        <input id="dueInput" name="due_at" type="datetime-local" class="form-control">
       </div>
-      <div>
-        <button type="submit">Submit</button>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-success">Submit</button>
       </div>
     </form>
     <br>
