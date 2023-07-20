@@ -18,7 +18,9 @@ def index(request):
         tasks = Task.objects.order_by('-posted_at')
     if request.GET.get('filter') == 'comp':
         tasks = Task.objects.filter(completed=True)
-    
+    if request.GET.get('filter') == 'not':
+        tasks = Task.objects.filter(completed=False)
+
     context = {
         'tasks': tasks
     }

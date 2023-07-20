@@ -32,7 +32,8 @@
       <a href="{% url 'index' %}?order=post">Sort by Posted Date</a>
     </div>
     <div>
-      <a href="{% url 'index' %}filter=comp">Filter Complated</a>
+      <a href="{% url 'index' %}filter=comp">Filter Complated</a> | 
+      <a href="{% url 'index' %}?filter=not">Filter Not Completed</a>
     </div>
 
     {% for task in tasks %}
