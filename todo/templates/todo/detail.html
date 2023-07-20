@@ -6,20 +6,21 @@
     <title>To Do Application</title>
     <meta charset="UTF-8">
     <meta name="author" content="INIAD">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   </head>
 
   <body>
     <h1>{{ task.title }}</h1>
-    <ul>
-      <li>Posted at: {{ task.posted_at }}</li>
-      {% if task.due_at %}
-      <li>Due at: {{ task.due_at }}</li>
-      {% endif %}
-      {% if task.completed %}
-      <li>Status: Completed</li>
-      {% else %}
-      <li>Status: Not Completed</li>
-      {% endif %}
+    <ul class="list-group">
+        <li class="list-group-item">Posted at: {{ task.posted_at }}</li>
+        {% if task.due_at %}
+        <li class="list-group-item">Due at: {{ task.due_at }}</li>
+        {% endif %}
+        {% if task.completed %}
+        <li class="list-group-item">Status: <b>Completed</b></li>
+        {% else %}
+        <li class="list-group-item">Status: <b>Not Completed</b></li>
+        {% endif %}
     </ul>
 
     <div>
